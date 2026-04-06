@@ -84,8 +84,10 @@
                             <div class="bloco-assinatura">
                             @if (stripos($agente->equipe, 'quarentena') !== false)
                                 <div class="linha-assinatura assinatura-diretor">Oswaldo Peixoto</div>
+                                <p>Assinatura do Diretor</p>
                             @else            
                                 <div class="linha-assinatura assinatura-diretor">Valter Bigorna</div>
+                                <p>Assinatura do Diretor</p>
                             @endif
                                 
                                 

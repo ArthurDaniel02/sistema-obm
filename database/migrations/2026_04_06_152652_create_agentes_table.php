@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('matricula')->unique();
             $table->string('tecnica');
-            $table->string('equipe')->default('Ponto Cego');
+            $table->string('equipe');
             $table->string('grau')->default(4);
             $table->string('tipo_sanguineo');
             $table->string('especializacao');

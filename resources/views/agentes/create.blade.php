@@ -32,8 +32,10 @@
 
             <div class="form-group">
                 <label>EQUIPE:</label>
-                <input type="text" name="equipe" value="Ponto Cego" required>
-            </div>
+                <select name="equipe">
+                    <option value="Ponto Cego">Ponto Cego</option>
+                    <option value="Quarentena">Quarentena</option>
+                </select>
 
            <div class="form-group">
                 <label>CLASSIFICAÇÃO DE GRAU:</label>

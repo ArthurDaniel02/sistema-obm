@@ -35,4 +35,36 @@ class AgenteController extends Controller
         \App\Models\Agente::create($dados); 
         return redirect()->route('agentes.index')->with('sucesso', 'Agente registrado no sistema.');
     }
+
+    public function edit($id)
+    {
+        $agente = \App\Models\Agente::findOrFail($id);
+        return view('agentes.edit',compact('agente'));
+    }
+
+    public function update(Request $request,$id)
+    {
+        $agente = \App\Models\Agente::findOrFail($id);
+
+        $dados = $request->except(['_token','_method']);
+
+        if($request->hasFile('foto')){
+            $nomeImagem = time().'.'.$request->foto->extension();
+            $request->foto->move(public_path('public/img/agentes'), $nomeImagem);
+            $dados['foto'] = 'public/img/agentes/' . $nomeImagem;
+        }
+
+        $agente->update($dados);
+        return redirect()->route('agentes.index')->with('sucesso','Registro do agente atualizado');
+
+    }
+
+    public function destroy($id)
+    {
+        $agente = \App\Models\Agente::findOrFail($id);
+        $agente->delete();
+
+        return redirect()->route('agentes.index')->with('sucesso', 'Agente expurgado do sistema oficial.');
+    }
+
 }

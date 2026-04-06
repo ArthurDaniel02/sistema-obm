@@ -31,6 +31,7 @@
 <body>
 
     <div class="painel-controle">
+        <img src="{{ asset('public/img/logoobm.png') }}" alt="Logo OBM" class="logoobm">
         <h1>SISTEMA DE REGISTRO DA ORDEM BRASILEIRA DE MAGIA (O.B.M.)</h1>
         <p>DEPARTAMENTO DE TRIAGEM E DESPACHO - DISTRITO FEDERAL</p>
         <br>
@@ -96,7 +97,18 @@
                     </div>
                 </div>
 
-            </div> @endforeach
+            </div>
+            
+            <div style="text-align: center; margin-top: 15px; display: flex; justify-content: center; gap: 10px;">
+                <a href="{{ route('agentes.edit', $agente->id) }}" style="background: #ccc; color: black; padding: 5px 15px; text-decoration: none; font-weight: bold; border: 2px solid black;">EDITAR DADOS</a>
+                
+                <form action="{{ route('agentes.destroy', $agente->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja expurgar este agente da O.B.M.? Esta ação é irreversível.');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" style="background: #b30000; color: white; padding: 5px 15px; border: 2px solid black; font-weight: bold; cursor: pointer;">EXPURGAR</button>
+                </form>
+            </div>
+            @endforeach
     </div>
 
 </body>

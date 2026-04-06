@@ -16,15 +16,28 @@
     <div class="form-container">
         <h2>FICHA DE ALISTAMENTO - O.B.M.</h2>
         <form action="{{ route('agentes.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf <div class="form-group">
+            @csrf 
+            <div class="form-group">
                 <label>NOME COMPLETO:</label>
                 <input type="text" name="nome" required>
             </div>
 
             <div class="form-group">
-                <label>MATRÍCULA (Ex: OBM-DF-000.000-26):</label>
-                <input type="text" name="matricula" required>
+                <label>NATUREZA DO REGISTRO:</label>
+                <select name="prefixo" required>
+                    <option value="409">Derivação Padrão (409)</option>
+                    <option value="001">Clãs Fundadores (001)</option>
+                    <option value="088">Auditoria Corporativa (088)</option>
+                    <option value="104">Transferência Internacional (104)</option>
+                    <option value="302">Imigração / Transferência (302)</option>
+                    <option value="510">Registro Médico-Tático (510)</option>
+                    <option value="616">Anomalia (616)</option>
+                    <option value="777">Registro Inato (777)</option>
+                    <option value="990">Anomalia Biológica / Híbrido (990)</option>
+                </select>
+                <p style="font-size: 10px; color: #555; margin-top: 5px;">O sistema gerará o sufixo numérico e o ano base automaticamente.</p>
             </div>
+
             <div class="form-group">
                 <label>TÉCNICA AMALDIÇOADA:</label>
                 <input type="text" name="tecnica" placeholder="Ex: Ilimitado" required>
@@ -36,6 +49,7 @@
                     <option value="Ponto Cego">Ponto Cego</option>
                     <option value="Quarentena">Quarentena</option>
                 </select>
+            </div>
 
            <div class="form-group">
                 <label>CLASSIFICAÇÃO DE GRAU:</label>

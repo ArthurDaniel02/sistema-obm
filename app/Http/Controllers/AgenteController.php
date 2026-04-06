@@ -19,13 +19,17 @@ class AgenteController extends Controller
     {
         $request->validate([
             'nome' => 'required',
-            'matricula' => 'required|unique:agentes',
+            'prefixo' => 'required',
             'foto' => 'image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
         $dados = $request->all();
         $dados['emissao'] = date('m/Y');
 
+        $prefixo = $request->prefixo;
+        $aleatorio = str_pad(rand(1, 999), 3, '0', STR_PAD_LEFT); 
+        $anoBase = date('y');
+        $dados['matricula'] = "OBM-DF-{$prefixo}.{$aleatorio}-{$anoBase}";
         if ($request->hasFile('foto')) {
             $nomeImagem = time() . '.' . $request->foto->extension();
             $request->foto->move(public_path('img/agentes'), $nomeImagem);

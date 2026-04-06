@@ -5,7 +5,6 @@
     <title>O.B.M. - Atualização de Agente</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
-        body { background-color: #2b2b2b; font-family: 'Courier New', Courier, monospace; display: flex; justify-content: center; padding: 50px; }
         .form-container { background: #fff; padding: 30px; border-radius: 8px; width: 500px; border: 2px solid #000; }
         .form-group { margin-bottom: 15px; }
         label { display: block; font-weight: bold; font-size: 12px; }
@@ -20,54 +19,64 @@
         
         <form action="{{ route('agentes.update', $agente->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT') <div class="form-group">
+            @method('PUT') 
+            <div class="form-group">
                 <label>NOME COMPLETO:</label>
-                <input type="text" name="nome" value="{{ $agente->nome }}" required>
+                <input type="text" name="nome" required>
             </div>
 
             <div class="form-group">
-                <label>MATRÍCULA:</label>
-                <input type="text" name="matricula" value="{{ $agente->matricula }}" required>
+                <label>MATRÍCULA DO SISTEMA (Imutável):</label>
+                <input type="text" name="matricula" value="{{ $agente->matricula }}" readonly style="background-color: #e0e0e0; color: #555; cursor: not-allowed;">
+            </div>
+
+                
+            <div class="form-group">
+                <label>TÉCNICA AMALDIÇOADA:</label>
+                <input type="text" name="tecnica" placeholder="Ex: Ilimitado" required>
             </div>
 
             <div class="form-group">
-                <label>EQUIPE TÁTICA:</label>
-                <input type="text" name="equipe" value="{{ $agente->equipe }}" required>
+                <label>EQUIPE:</label>
+                <select name="equipe">
+                    <option value="Ponto Cego">Ponto Cego</option>
+                    <option value="Quarentena">Quarentena</option>
+                </select>
             </div>
-
-            <div class="form-group">
+           <div class="form-group">
                 <label>CLASSIFICAÇÃO DE GRAU:</label>
                 <select name="grau" required>
-                    <option value="4" {{ $agente->grau == '4' ? 'selected' : '' }}>Grau 4 (Baixa Ameaça)</option>
-                    <option value="3" {{ $agente->grau == '3' ? 'selected' : '' }}>Grau 3</option>
-                    <option value="2" {{ $agente->grau == '2' ? 'selected' : '' }}>Grau 2</option>
-                    <option value="1" {{ $agente->grau == '1' ? 'selected' : '' }}>Grau 1 (Alta Ameaça)</option>
-                    <option value="ESPECIAL" {{ $agente->grau == 'ESPECIAL' ? 'selected' : '' }}>Classe Especial</option>
+                    <option value="4">Grau 4</option>
+                    <option value="3">Grau 3</option>
+                    <option value="2">Grau 2</option>
+                    <option value="1">Grau 1</option>
+                    <option value="ESPECIAL">Grau Especial</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>ESPECIALIZAÇÃO TÁTICA:</label>
+                <label>ESPECIALIZAÇÃO:</label>
                 <select name="especializacao">
-                    <option value="Suporte" {{ $agente->especializacao == 'Suporte' ? 'selected' : '' }}>Suporte</option>
-                    <option value="Supressão" {{ $agente->especializacao == 'Supressão' ? 'selected' : '' }}>Supressão</option>
-                    <option value="Infiltração" {{ $agente->especializacao == 'Infiltração' ? 'selected' : '' }}>Infiltração</option>
-                    <option value="Investigação" {{ $agente->especializacao == 'Investigação' ? 'selected' : '' }}>Investigação</option>
+                    <option value="Suporte">Suporte</option>
+                    <option value="Lutador">Lutador</option>
+                    <option value="Especialista em Técnica">Especialista em Técnica</option>
+                    <option value="Especialista em Combate">Especialista em Combate</option>
+                    <option value="Controlador">Controlador</option>
+                    <option value="Restringido">Restringido</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>TIPO SANGUÍNEO:</label>
-                <input type="text" name="tipo_sanguineo" value="{{ $agente->tipo_sanguineo }}" required>
+                <input type="text" name="tipo_sanguineo" placeholder="Ex: O-" required>
             </div>
 
             <div class="form-group">
                 <label>FOTO 3X4 (ARQUIVO JPG):</label>
                 <input type="file" name="foto">
-                <p style="font-size: 10px; margin-top: 5px; color: #555;">Deixe em branco para manter a foto atual do sistema.</p>
             </div>
 
-            <button type="submit">SALVAR ALTERAÇÕES NO REGISTRO</button>
+            <button type="submit">GERAR REGISTRO OFICIAL</button>
             <a href="{{ route('agentes.index') }}" class="btn-voltar">CANCELAR E VOLTAR AO ARQUIVO</a>
         </form>
     </div>

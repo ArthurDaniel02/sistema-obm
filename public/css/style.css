@@ -1,11 +1,41 @@
-     body { 
-        background-color: #2b2b2b; 
+    body { 
+        background-color: #ffffff; 
         font-family: 'Courier New', Courier, monospace; 
         display: flex; 
         justify-content: center; 
         padding: 50px; 
     }
-    
+
+    /*Css do Index inicial.*/
+    .bodyindex {
+            display: block;
+            padding: 0;
+            margin: 0;
+            justify-content: center; 
+            font-family: 'Courier New', Courier, monospace; 
+            margin-top: 10px;
+            background-color: #ffffff;
+    }
+    .painel-controle {
+            text-align: center;
+            margin-bottom: 40px;
+            color: rgb(0, 0, 0);
+    }
+    .btn-novo {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            border: 2px solid rgb(255, 255, 255);
+    }
+    .galeria-agentes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            justify-content: center;
+    }
     .container-carteirinhas {
         display: flex;
         flex-direction: column;
@@ -153,8 +183,6 @@
         position: relative;
         padding: 0;
         justify-content: center;
-        margin-top: 130px;
-        right: 15px;
     }
 
 
@@ -241,3 +269,6 @@
         font-size: 15px;
         color: #111;
     }
+
+
+    

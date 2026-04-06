@@ -113,3 +113,84 @@
 
 </body>
 </html>
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carteirinha O.B.M.</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+=========================================
+<div class="container-carteirinhas">
+    <div class="carteirinha">
+        <div class="cabecalho">
+            <img src="img/obm2.png" alt="Carimbo OBM" class="logoobm">
+            <div class="textos-cabecalho">
+                    <h1>REPÚBLICA FEDERATIVA DO BRASIL</h1>
+                    <h2>ORDEM BRASILEIRA DE MAGIA (O.B.M.)</h2>
+            </div>
+        </div>
+        
+
+        <div class="conteudo">
+            <div class="bloco-esquerdo">
+                <img src="img/Tereza.png" alt="Foto do Agente" class="foto-3x4">
+            </div>
+
+            <div class="bloco-direito">
+                <div><strong>NOME:</strong> Tereza Duarte Andreotti</div>
+                <div><strong>MATRÍCULA:</strong> OBM-DF-088.404-26</div>
+                <div><strong>EQUIPE:</strong> Ponto Cego 1º Ano </div>
+                <div><strong>TÉCNICA:</strong>Luz de Lyrae</div>
+                <div><strong>GRAU:</strong> 4 
+                <div><strong>TIPO SANGUÍNEO:</strong> A+</div>
+                <div><strong>ESPECIALIZAÇÃO:</strong> Suporte</div>
+                <div><strong>EMISSÃO:</strong> 04/2026</div>
+                
+                <img src="img/pc.png" alt="Carimbo Equipe PC" class="carimbo-direita">
+                <p><strong>I.F.T.</strong></p>
+
+               
+            </div>
+        </div>
+    </div>
+
+    <div class="carteirinha-verso">
+        <div class="tarja-magnetica"></div>
+        <div class="conteudo-verso">
+            <div class="aviso-destaque">
+                DOCUMENTO DE PORTE OBRIGATÓRIO EM ÁREAS DE QUARENTENA.
+            </div>
+            
+            <div class="texto-legal">
+                <strong>Autorização:</strong> O portador deste documento possui autoridade federal nível 4 para acesso a cenas de crime, isolamento de áreas civis e neutralização de anomalias classificadas. A obstrução do portador constitui crime federal.
+            </div>
+            
+            <div class="texto-legal">
+                <strong>Diretriz de Óbito:</strong> Em caso de recolhimento deste documento junto a restos mortais, favor devolver à Central de Triagem da O.B.M. (Setor de Autarquias Sul, DF). Não notificar a família civil sob risco de quebra de sigilo mágico.
+            </div>
+
+            <div class="area-assinaturas">
+                <div class="bloco-assinatura">
+                    <div class="linha-assinatura assinatura-portador">Tereza Duarte Andreotti</div>
+                    <p>Assinatura do Portador</p>
+                </div>
+                <div class="bloco-assinatura">
+                    <div class="linha-assinatura assinatura-diretor">Valter Bigorna</div>
+                    <p>Diretor Responsável</p>
+                </div>
+            </div>
+
+            <div class="area-codigo">
+                <img src="img/unnamed.png" alt="Código de Barras" class="codigo-barras">
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

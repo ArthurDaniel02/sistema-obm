@@ -1,0 +1,8 @@
+body { background-color: #111; color: #eee; font-family: 'Courier New', Courier, monospace; display: flex; justify-content: center; padding: 40px; }
+.form-container { background: #1a1a1a; padding: 30px; width: 600px; border: 1px solid #333; border-top: 5px solid #b30000; box-shadow: 0 0 20px rgba(0,0,0,0.8); }
+.form-group { margin-bottom: 20px; }
+label { display: block; font-weight: bold; color: #888; font-size: 12px; margin-bottom: 5px; text-transform: uppercase; }
+input, select, textarea { width: 100%; padding: 10px; background: #222; border: 1px solid #444; color: #fff; font-family: 'Courier New', monospace; box-sizing: border-box; }
+textarea { resize: vertical; min-height: 80px; }
+button { background: #b30000; color: #fff; padding: 15px; width: 100%; cursor: pointer; border: 1px solid #ff4d4d; font-weight: bold; text-transform: uppercase; margin-top: 10px; }
+.btn-voltar { display: block; text-align: center; margin-top: 15px; color: #888; text-decoration: none; font-size: 12px; }

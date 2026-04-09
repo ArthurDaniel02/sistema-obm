@@ -14,6 +14,7 @@
         <p>DEPARTAMENTO DE TRIAGEM E DESPACHO - DISTRITO FEDERAL</p>
         <br>
         <a href="{{ route('agentes.create') }}" class="btn-novo">+ REGISTRAR NOVO AGENTE</a>
+        <a href="{{ route('maldicoes.index') }}" class="btn-novo" style="background-color: #b30000; color: white; border-color: #ff4d4d; margin-left: 15px;"> ABRIR ARQUIVO DE AMEAÇAS (BESTIÁRIO) </a>    
     </div>
 
     @if(session('sucesso'))
@@ -39,6 +40,12 @@
                     <div class="conteudo">
                         <div class="bloco-esquerdo">
                             <img src="{{ $agente->foto ? asset($agente->foto) : asset('img/foto-padrao.jpg') }}" alt="Foto do Agente" class="foto-3x4">
+
+                            @if(stripos($agente->equipe, 'quarentena') !== false)
+                                <img src="{{ asset('img/qt.png') }}" alt="Carimbo Quarentena" class="carimbo-direita">
+                            @else
+                                <img src="{{ asset('img/pc.png') }}" alt="Carimbo Equipe PC" class="carimbo-direita">
+                            @endif
                         </div>
 
                         <div class="bloco-direito">
@@ -51,10 +58,8 @@
                             <div><strong>EMISSÃO:</strong> {{ $agente->emissao }}</div>
                             
                             @if(stripos($agente->equipe, 'quarentena') !== false)
-                                <img src="{{ asset('img/qt.png') }}" alt="Carimbo Quarentena" class="carimbo-direita">
                                 <p><strong>I.V.C.</strong></p>
                             @else
-                                <img src="{{ asset('img/pc.png') }}" alt="Carimbo Equipe PC" class="carimbo-direita">
                                 <p><strong>I.F.T.</strong></p>
                             @endif
                         </div>

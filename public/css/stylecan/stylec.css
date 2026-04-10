@@ -1,0 +1,235 @@
+/* --- RESET E VARIÁVEIS --- */
+:root {
+    --madeira-escura: #3e2723;
+    --madeira-clara: #5d4037;
+    --cor-pergaminho: #f4e4bc;
+    --cor-tinta: #2c1a0e;
+    --cor-primaria: #cc8800;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* --- CABEÇALHO --- */
+.cabecalho-cantina {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    border-bottom: 4px solid var(--cor-primaria);
+}
+
+.cabecalho-cantina h1 {
+    color: var(--cor-primaria);
+    margin: 0;
+    font-size: 32px;
+}
+
+.subtitulo {
+    color: #888;
+    font-style: italic;
+}
+
+.botoes-topo {
+    margin-top: 15px;
+}
+
+.btn-novo, .btn-voltar {
+    display: inline-block;
+    padding: 8px 15px;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #555;
+    margin: 0 5px;
+    background: #222;
+}
+
+.btn-novo:hover { background: var(--cor-primaria); color: #000; }
+
+.alerta-sucesso {
+    text-align: center;
+    background: #003300;
+    color: #00ff00;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* --- A MESA DE MADEIRA --- */
+.mesa-madeira {
+    background-color: var(--madeira-escura); 
+    padding: 10px;
+    min-height: 70vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+/* --- O ITEM NA MESA (CONTAINER PRINCIPAL) --- */
+.item-mesa {
+    position: relative; /* OBRIGATÓRIO: Mantém o tooltip preso a este prato específico */
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Empilhamento de imagens */
+.conjunto-prato {
+    position: absolute; /* Mudamos de relative para absolute */
+    bottom: -180px; /* Cola o prato no fundo da caixa (na mesa) */
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* Quando o mouse passa no conjunto, o prato dá um pulinho */
+.item-mesa:hover .conjunto-prato {
+    transform: scale(1.1) translateY(-10px);
+}
+
+.prato-fundo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    /* A sombra cai para baixo (15px) e é bem esfumaçada (10px) */
+    filter: drop-shadow(0px 15px 10px rgba(0,0,0,0.8)); 
+}
+
+.comida-topo {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    z-index: 2; /* Fica em cima do prato */
+    object-fit: cover;
+    border-radius: 50%; /* Arredonda fotos quadradas para encaixar no prato */
+}
+
+/* Etiqueta de Preço no estilo RPG */
+.etiqueta-preco {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #b30000;
+    color: white;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 2px solid #ffd700;
+    z-index: 3;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.6);
+}
+
+/* --- O TOOLTIP (A MÁGICA DO HOVER) --- */
+.tooltip-info {
+    position: absolute;
+    bottom: 10px; /* Joga a caixa para cima do prato */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    background: var(--cor-pergaminho); /* Fundo cor de papel antigo */
+    color: var(--cor-tinta);
+    padding: 15px;
+    border: 3px solid #8b5a2b;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.9);
+    z-index: 100; /* Garante que fique acima de todos os pratos */
+    
+    /* ESCONDE POR PADRÃO */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* O SEGREDO: Revela o Tooltip quando o mouse entra no .item-mesa */
+.item-mesa:hover .tooltip-info {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-10px);
+}
+
+/* Detalhes de texto dentro do Tooltip */
+.tooltip-cabecalho h3 {
+    margin: 0 0 5px 0;
+    font-family: 'Arial Black', sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.badge-tipo {
+    font-size: 10px;
+    background: #555;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.tooltip-efeito {
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 10px 0;
+}
+
+/* Área de Compra no Tooltip */
+.area-compra {
+    background: rgba(0,0,0,0.05);
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.select-agente {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 5px;
+    background: #fff;
+    border: 1px solid #999;
+}
+
+.btn-servir {
+    width: 100%;
+    background: #006600;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-servir:hover { background: #008800; }
+
+/* Controles do Mestre no Tooltip */
+.controles-mestre {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: 1px dashed #ccc;
+}
+
+.btn-acao {
+    font-size: 11px;
+    padding: 4px 8px;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-edit { background: #555; }
+.btn-del { background: #b30000; }

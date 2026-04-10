@@ -15,6 +15,7 @@
         <br>
         <a href="{{ route('agentes.create') }}" class="btn-novo">+ REGISTRAR NOVO AGENTE</a>
         <a href="{{ route('maldicoes.index') }}" class="btn-novo" style="background-color: #b30000; color: white; border-color: #ff4d4d; margin-left: 15px;"> ABRIR ARQUIVO DE AMEAÇAS (BESTIÁRIO) </a>    
+        <a href="{{ route('comidas.index') }}" class="btn-novo" style="background-color: #cc8800; color: #000; border-color: #b37700; margin-left: 15px;"> IR PARA O REFEITÓRIO </a>
     </div>
 
     @if(session('sucesso'))

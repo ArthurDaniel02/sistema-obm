@@ -1,0 +1,125 @@
+/* Reset básico para a tela de login */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #0d0d0d;
+    font-family: 'Courier New', Courier, monospace;
+    color: #e0e0e0;
+}
+
+/* Fundo da tela inteira, centralizando a caixa */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+}
+
+/* A caixa principal do formulário */
+.login-box {
+    background-color: #111111;
+    border: 1px solid #333333;
+    border-top: 5px solid #b30000;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 0 30px rgba(179, 0, 0, 0.2);
+}
+
+/* Cabeçalho do Login */
+.cabecalho-login {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px dashed #444444;
+    padding-bottom: 20px;
+}
+
+.logo-login {
+    width: 80px;
+    margin-bottom: 15px;
+    filter: grayscale(100%);
+}
+
+.cabecalho-login h1 {
+    color: #b30000;
+    font-size: 24px;
+    margin: 0 0 5px 0;
+    letter-spacing: 2px;
+}
+
+.cabecalho-login p {
+    color: #888888;
+    font-size: 12px;
+    margin: 0;
+}
+
+/* Caixa de Erro Vermelha */
+.alerta-erro {
+    background-color: #330000;
+    border-left: 4px solid #ff4d4d;
+    color: #ffb3b3;
+    padding: 10px;
+    font-size: 12px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Grupos do Formulário */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #888888;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    background-color: #000000;
+    border: 1px solid #444444;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #b30000;
+    background-color: #0a0a0a;
+}
+
+/* Botão Principal */
+.btn-login {
+    width: 100%;
+    background-color: #b30000;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #ff3333;
+}
+
+/* Aviso no rodapé */
+.rodape-login {
+    text-align: center;
+    color: #555555;
+    font-size: 10px;
+    margin-top: 30px;
+    text-transform: uppercase;
+}

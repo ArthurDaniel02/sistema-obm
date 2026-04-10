@@ -20,4 +20,8 @@ class Agente extends Model
         'emissao', 
         'foto'
     ];
+
+    public function user() {
+    return $this->belongsTo(User::class);
+}
 }

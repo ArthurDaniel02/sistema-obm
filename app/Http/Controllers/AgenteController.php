@@ -1,8 +1,9 @@
 <?php
 namespace App\Http\Controllers;
+use App\Http\Controllers\AuthController;
 use App\Models\Agente;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class AgenteController extends Controller
 {
     public function index()
@@ -71,4 +72,26 @@ class AgenteController extends Controller
         return redirect()->route('agentes.index')->with('sucesso', 'Agente expurgado do sistema oficial.');
     }
 
+public function gerenciarInventario(Agente $agente)
+    {
+        // Garante que só o Mestre acessa essa tela
+        if (!Auth::user()->is_mestre) {
+            abort(403, 'Acesso Negado. Você não é um Mestre da O.B.M.');
+        }
+
+        return view('agentes.inventario_mestre', compact('agente'));
+    }
+
+    public function salvarInventario(Request $request, Agente $agente)
+    {
+        if (!Auth::user()->is_mestre) {
+            abort(403);
+        }
+
+        // Atualiza diretamente o campo de texto do inventário
+        $agente->inventario = $request->input('inventario');
+        $agente->save();
+
+        return redirect()->route('agentes.index')->with('sucesso', 'Inventário de ' . $agente->nome . ' atualizado pelo Mestre.');
+    }
 }

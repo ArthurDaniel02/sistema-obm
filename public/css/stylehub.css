@@ -1,0 +1,125 @@
+/* --- FUNDO E RESET --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #0d0d0d;
+    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- CONTAINER PRINCIPAL --- */
+.hub-container {
+    background: #111;
+    border: 1px solid #333;
+    border-top: 4px solid #cc8800;
+    width: 800px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* --- CABEÇALHO --- */
+.hub-header {
+    background: #1a1a1a;
+    padding: 30px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+.logo-hub {
+    width: 70px;
+    filter: grayscale(100%);
+    margin-bottom: 10px;
+}
+
+.hub-header h1 {
+    color: #cc8800;
+    margin: 0 0 5px 0;
+    letter-spacing: 3px;
+}
+
+.hub-header p {
+    color: #888;
+    margin: 0;
+    font-size: 14px;
+}
+
+.btn-sair {
+    background: transparent;
+    border: 1px solid #b30000;
+    color: #ff4d4d;
+    padding: 5px 15px;
+    font-size: 11px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.btn-sair:hover {
+    background: #b30000;
+    color: white;
+}
+
+/* --- PAINEL E BOTÕES --- */
+.hub-painel {
+    padding: 40px;
+}
+
+.titulo-sessao {
+    color: #fff;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-left: 3px solid #cc8800;
+    padding-left: 10px;
+}
+
+.grid-botoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.btn-hub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-hub .icone {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+/* Cores Hover Específicas */
+.btn-hub.mestre:hover {
+    background: #2a0000;
+    border-color: #ff4d4d;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.2);
+}
+
+.btn-hub.jogador:hover {
+    background: #001a33;
+    border-color: #4d94ff;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(77, 148, 255, 0.2);
+}

@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Agente extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'nome', 
         'matricula', 
@@ -18,10 +17,13 @@ class Agente extends Model
         'tipo_sanguineo', 
         'especializacao', 
         'emissao', 
-        'foto'
+        'foto',
+        'saldo',
+        'inventario',
+        'user_id'
     ];
 
     public function user() {
-    return $this->belongsTo(User::class);
-}
+        return $this->belongsTo(User::class);
+    }
 }

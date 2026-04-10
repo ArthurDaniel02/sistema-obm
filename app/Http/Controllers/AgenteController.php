@@ -8,8 +8,22 @@ class AgenteController extends Controller
 {
     public function index()
     {
-        $agentes = Agente::all();
-        return view('agentes.index', compact('agentes'));
+        // Se for o Mestre, ele vê a lista com TODOS os agentes
+        if (\Illuminate\Support\Facades\Auth::user()->is_mestre) {
+            $agentes = Agente::all();
+            return view('agentes.index_mestre', compact('agentes'));
+        } 
+        // Se for o Jogador, ele vê só a própria carteirinha e inventário
+        else {
+            $agente = \Illuminate\Support\Facades\Auth::user()->agente;
+            
+            // Se o jogador ainda não criou a ficha, manda ele criar
+            if (!$agente) {
+                return redirect()->route('agentes.create')->with('aviso', 'Crie sua ficha de Agente para acessar o sistema.');
+            }
+
+            return view('agentes.index_player', compact('agente'));
+        }
     }
     public function create()
     {
@@ -18,29 +32,31 @@ class AgenteController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' => 'required',
-            'prefixo' => 'required',
-            'foto' => 'image|mimes:jpeg,png,jpg|max:2048'
-        ]);
-
         $dados = $request->all();
-        $dados['emissao'] = date('m/Y');
+        
+        // 1. Liga a ficha ao ID do usuário que está logado
+        $dados['user_id'] = \Illuminate\Support\Facades\Auth::id();
 
-        $prefixo = $request->prefixo;
-        $aleatorio = str_pad(rand(1, 999), 3, '0', STR_PAD_LEFT); 
-        $anoBase = date('y');
-        $dados['matricula'] = "OBM-DF-{$prefixo}.{$aleatorio}-{$anoBase}";
+        // 2. GERAÇÃO AUTOMÁTICA DE MATRÍCULA E EMISSÃO
+        // Pega o 'prefixo' que veio do form (ex: 409) e adiciona um código único de 4 dígitos
+        $prefixo = $request->input('prefixo', 'OBM'); 
+        $dados['matricula'] = $prefixo . '-' . rand(1000, 9999);
+        
+        // Carimba a emissão com a data de hoje (Ex: 09/04/2026)
+        $dados['emissao'] = date('d/m/Y');
+
+        // 3. Tratamento da foto
         if ($request->hasFile('foto')) {
             $nomeImagem = time() . '.' . $request->foto->extension();
             $request->foto->move(public_path('img/agentes'), $nomeImagem);
             $dados['foto'] = 'img/agentes/' . $nomeImagem;
         }
 
-        \App\Models\Agente::create($dados); 
-        return redirect()->route('agentes.index')->with('sucesso', 'Agente registrado no sistema.');
-    }
+        Agente::create($dados);
 
+        // Depois de criar a ficha, manda ele de volta pro Hub!
+        return redirect()->route('hub')->with('sucesso', 'Ficha de Agente registrada e Credencial gerada com sucesso!');
+    }
     public function edit($id)
     {
         $agente = \App\Models\Agente::findOrFail($id);

@@ -37,7 +37,11 @@
             </form>
             
             <div class="rodape-login">
-                Acesso restrito a pessoal autorizado. O monitoramento é constante.
+                <p style="margin-bottom: 15px;">Acesso restrito a pessoal autorizado. O monitoramento é constante.</p>
+                
+                <a href="{{ route('register') }}" style="color: #cc8800; text-decoration: none; font-weight: bold; font-size: 12px; border: 1px solid #444; padding: 8px 15px; border-radius: 4px; display: inline-block; transition: 0.3s; background: #1a1a1a;" onmouseover="this.style.background='#332200'" onmouseout="this.style.background='#1a1a1a'">
+                    NÃO POSSUI CREDENCIAL? SOLICITE ALISTAMENTO
+                </a>
             </div>
         </div>
     </div>
